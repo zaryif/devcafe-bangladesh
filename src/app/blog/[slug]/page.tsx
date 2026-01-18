@@ -1,18 +1,8 @@
-'use client';
-
-import { useParams } from 'next/navigation';
-
-// Generate static params for all blog posts
-export function generateStaticParams() {
-    return [
-        { slug: 'why-coworking-spaces-matter' },
-    ];
-}
 import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { ArrowLeft, Calendar, User, Clock, Tag, Share2, Twitter, Facebook, Linkedin, ArrowRight } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, Twitter, Facebook, Linkedin, Share2 } from 'lucide-react';
 
 const blogPosts: Record<string, {
     title: string;
@@ -59,10 +49,14 @@ We believe the future of work is flexible, collaborative, and community-driven. 
     },
 };
 
-export default function BlogPostPage() {
-    const params = useParams();
-    const slug = params.slug as string;
-    const post = blogPosts[slug];
+export function generateStaticParams() {
+    return [
+        { slug: 'why-coworking-spaces-matter' },
+    ];
+}
+
+export default function BlogPostPage({ params }: { params: { slug: string } }) {
+    const post = blogPosts[params.slug];
 
     if (!post) {
         return (

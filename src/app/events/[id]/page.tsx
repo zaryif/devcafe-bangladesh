@@ -1,13 +1,3 @@
-'use client';
-
-import { useParams } from 'next/navigation';
-
-// Generate static params for all events
-export function generateStaticParams() {
-    return [
-        { id: '1' },
-    ];
-}
 import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
@@ -72,10 +62,14 @@ Bring your laptop with Rust installed. We'll provide coffee and snacks!`,
     },
 };
 
-export default function EventDetailsPage() {
-    const params = useParams();
-    const eventId = params.id as string;
-    const event = eventsData[eventId];
+export function generateStaticParams() {
+    return [
+        { id: '1' },
+    ];
+}
+
+export default function EventDetailsPage({ params }: { params: { id: string } }) {
+    const event = eventsData[params.id];
 
     if (!event) {
         return (
