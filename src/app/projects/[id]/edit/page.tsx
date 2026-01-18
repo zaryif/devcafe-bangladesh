@@ -1,6 +1,14 @@
 'use client';
 
 import { useParams, useRouter } from 'next/navigation';
+
+// Generate static params for all project edit pages
+export function generateStaticParams() {
+    return [
+        { id: '1' },
+        { id: '2' },
+    ];
+}
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';

@@ -1,6 +1,13 @@
 'use client';
 
 import { useParams } from 'next/navigation';
+
+// Generate static params for all events
+export function generateStaticParams() {
+    return [
+        { id: '1' },
+    ];
+}
 import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';

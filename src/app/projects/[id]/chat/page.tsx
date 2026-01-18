@@ -1,6 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+
+// Generate static params for all project chats
+export function generateStaticParams() {
+    return [
+        { id: '1' },
+        { id: '2' },
+    ];
+}
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
@@ -83,8 +91,8 @@ export default function ProjectChatPage() {
                                 key={channel.id}
                                 onClick={() => setActiveChannel(channel.id)}
                                 className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors ${activeChannel === channel.id
-                                        ? 'bg-primary/20 text-primary'
-                                        : 'text-gray-400 hover:text-white hover:bg-gray-800'
+                                    ? 'bg-primary/20 text-primary'
+                                    : 'text-gray-400 hover:text-white hover:bg-gray-800'
                                     }`}
                             >
                                 <span className="flex items-center gap-2">
